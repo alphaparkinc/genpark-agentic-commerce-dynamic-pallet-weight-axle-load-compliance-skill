@@ -1,0 +1,66 @@
+{
+  "name": "genpark-agentic-commerce-dynamic-pallet-weight-axle-load-compliance-skill",
+  "version": "1.0.0",
+  "title": "Commerce Freight Axle Load & GVWR Compliance Optimizer Skill",
+  "description": "DOT gross vehicle weight rating (GVWR) & semi-truck steer/drive/tandem axle distribution compliance optimizer. Built for GenPark (https://www.genpark.ai).",
+  "homepage": "https://www.genpark.ai",
+  "linkedin": "https://www.linkedin.com/company/92955550",
+  "category": "agentic-commerce",
+  "topics": [
+    "axle-load",
+    "gvwr-compliance",
+    "freight-weight",
+    "trucking-logistics",
+    "agentic-commerce",
+    "model-context-protocol",
+    "genpark"
+  ],
+  "tools": [
+    {
+      "name": "audit_semi_truck_axle_weights",
+      "description": "Audit steer, drive, and trailer tandem axle weights against federal bridge formula limits (12k/34k/34k lbs).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "steer_axle_lbs": {
+            "type": "number"
+          },
+          "drive_axle_lbs": {
+            "type": "number"
+          },
+          "tandem_trailer_axle_lbs": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "steer_axle_lbs",
+          "drive_axle_lbs",
+          "tandem_trailer_axle_lbs"
+        ]
+      }
+    },
+    {
+      "name": "calculate_tandem_slider_pin_adjustment",
+      "description": "Calculate trailer tandem slider hole shift needed to rebalance weight from drive to tandem axles.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "overweight_axle": {
+            "type": "string",
+            "enum": [
+              "DRIVE",
+              "TANDEM"
+            ]
+          },
+          "excess_weight_lbs": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "overweight_axle",
+          "excess_weight_lbs"
+        ]
+      }
+    }
+  ]
+}
